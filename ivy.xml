@@ -1,0 +1,15 @@
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd" xmlns:m="http://ant.apache.org/ivy/maven"> 
+    <info organisation="org.spiffyui" module="hellospiffy-ivy"/>
+    <dependencies>
+        <!-- Spiffy UI JARs -->
+        <dependency org="org.spiffyui" name="spiffyui" changing="true" rev="0.7.5"/>
+        
+        <!-- These are the JARs we need for building GWT. -->
+        <dependency org="javax.validation" name="validation-api" rev="1.0.0.GA"> 
+            <artifact name="validation-api"/> 
+            <artifact name="validation-api" m:classifier="sources"/> 
+        </dependency>
+        <dependency org="com.google.gwt" name="gwt-user" rev="2.3.0"/>
+        <dependency org="com.google.gwt" name="gwt-dev" rev="2.3.0"/>
+    </dependencies>
+</ivy-module>
