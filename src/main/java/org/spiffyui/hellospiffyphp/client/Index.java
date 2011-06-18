@@ -121,7 +121,7 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
             MessageUtil.showWarning("Please enter your name in the text field.", false);
             return;
         }
-        RESTility.callREST("simple/" + q, new RESTCallback() {
+        RESTility.callREST("hellospiffyphp.php?name=" + q, new RESTCallback() {
             
             @Override
             public void onSuccess(JSONValue val)

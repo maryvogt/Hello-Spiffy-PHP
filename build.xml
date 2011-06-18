@@ -2,6 +2,7 @@
 <project name="Spiffy UI Framework Sample Project" xmlns:ivy="antlib:org.apache.ivy.ant" default="all" basedir=".">
 
     <target name="all" depends="setup,resolve" description="Build, compile, and package the entire application">
+	<copy file="${root}/hellospiffyphp.php" todir="${sample.out.www}"/>
         <antcall target="gwt-compile">
             <param name="gwttarget" value="org.spiffyui.hellospiffyphp.index"/>
         </antcall>
