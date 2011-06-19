@@ -36,8 +36,11 @@ function emit_server_info(){
   	echo json_encode($str);
 }
 
+//  emit_json_data()
+//      outputs the desired info as JSON data
 function emit_json_data(){
 
+    //  start with a header to set our MIME type
     header("Content-Type: application/json");
     ?> 
     
@@ -49,6 +52,7 @@ function emit_json_data(){
     <?php
 }
 
+// Here it is: construct and output the wanted JSON data
 emit_json_data();
 ?> 
 
