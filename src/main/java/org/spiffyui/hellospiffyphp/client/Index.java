@@ -129,8 +129,9 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
         
         String restURL = "hellospiffyphp.php";
         restURL = restURL + "?name=" + q; // we know we have a name because we passed the check above
-        if (m_triggerError.getValue())
+        if (m_triggerError.getValue()) {
             restURL = restURL + "&triggererror=TRUE";
+        }
             
         RESTility.callREST(restURL, new RESTCallback() {
             
