@@ -102,9 +102,12 @@
         <echo>
 ========================================================================
 
-        To start Hello Spiffy PHP, 
-
-		TODO
+        To run Hello Spiffy PHP, copy the contents of 
+        
+            ${sample.out.www}
+            
+            to your Apache server and access the index.html file.
+       
 
 ========================================================================
         </echo>

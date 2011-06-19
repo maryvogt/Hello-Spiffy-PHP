@@ -33,6 +33,7 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -47,6 +48,7 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
 
     private static Index g_index;
     private TextBox m_text = new TextBox();
+    private CheckBox m_triggerError = new CheckBox();
     private LongMessage m_longMessage = new LongMessage("longMsg");
 
     /**
@@ -62,7 +64,7 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
     public void onModuleLoad()
     {
         MainHeader header = new MainHeader();
-        header.setHeaderTitle("Hello Spiffy PHP!");
+        header.setHeaderTitle("Hello Spiffy PHP!" );
         
         MainFooter footer = new MainFooter();
         footer.setFooterString("This application is a <a href=\"http://www.spiffyui.org\">Spiffy UI Framework</a> application");
@@ -85,6 +87,9 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
         label.setHeight("1em");
         panel.add(label);
         panel.add(m_text);
+        final InlineLabel label2 = new InlineLabel("   Trigger error?" );
+        panel.add(label2);
+        panel.add(m_triggerError);
         final Button button = new Button("Submit");
         panel.add(button);
         
@@ -121,7 +126,13 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
             MessageUtil.showWarning("Please enter your name in the text field.", false);
             return;
         }
-        RESTility.callREST("hellospiffyphp.php?name=" + q, new RESTCallback() {
+        
+        String restURL = "hellospiffyphp.php";
+        restURL = restURL + "?name=" + q; // we know we have a name because we passed the check above
+        if (m_triggerError.getValue())
+            restURL = restURL + "&triggererror=TRUE";
+            
+        RESTility.callREST(restURL, new RESTCallback() {
             
             @Override
             public void onSuccess(JSONValue val)
