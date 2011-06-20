@@ -48,7 +48,9 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
 
     private static Index g_index;
     private TextBox m_text = new TextBox();
-    private CheckBox m_triggerError = new CheckBox();
+//    private CheckBox m_triggerError = new CheckBox();
+    private Button m_submit = new Button("Submit");
+    private Button m_submitWithError = new Button("Submit and trigger error");
     private LongMessage m_longMessage = new LongMessage("longMsg");
 
     /**
@@ -87,13 +89,15 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
         label.setHeight("1em");
         panel.add(label);
         panel.add(m_text);
-        final InlineLabel label2 = new InlineLabel("   Trigger error?" );
-        panel.add(label2);
-        panel.add(m_triggerError);
-        final Button button = new Button("Submit");
-        panel.add(button);
+//        final InlineLabel label2 = new InlineLabel("   Trigger error?" );
+//        panel.add(label2);
+//        panel.add(m_triggerError);
+//        final Button buttonSubmit = new Button("Submit");
+        panel.add(m_submit);
+        panel.add(m_submitWithError);
         
-        button.addClickHandler(this);
+        m_submit.addClickHandler(this);
+        m_submitWithError.addClickHandler(this);
         m_text.addKeyPressHandler(this);
 
         RootPanel.get("mainContent").add(panel);
@@ -102,24 +106,27 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
     @Override
     public void onClick(ClickEvent event)
     {
-        sendRequest();
+        // this is either from the "Submit" button or the "Submit and trigger error" button
+
+        boolean triggerError = (event.getSource() == m_submitWithError);
+        sendRequest(triggerError);
     }
 
     @Override
     public void onKeyPress(KeyPressEvent event)
     {
         /*
-         We want to submit the request if the user pressed enter
+         We want to submit the normal request if the user pressed enter
          */
         if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER) {
-            sendRequest();
+            sendRequest(false);
         }
     }
     
     /**
      * Send the REST request to the server and read the response back.
      */
-    private void sendRequest()
+    private void sendRequest(boolean triggerError)
     {
         String q = m_text.getValue().trim();
         if (q.equals("")) {
@@ -129,7 +136,7 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
         
         String restURL = "hellospiffyphp.php";
         restURL = restURL + "?name=" + q; // we know we have a name because we passed the check above
-        if (m_triggerError.getValue()) {
+        if (triggerError) {
             restURL = restURL + "&triggererror=TRUE";
         }
             
