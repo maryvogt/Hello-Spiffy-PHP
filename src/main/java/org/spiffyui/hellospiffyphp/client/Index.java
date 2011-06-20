@@ -33,7 +33,6 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -89,10 +88,6 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
         label.setHeight("1em");
         panel.add(label);
         panel.add(m_text);
-//        final InlineLabel label2 = new InlineLabel("   Trigger error?" );
-//        panel.add(label2);
-//        panel.add(m_triggerError);
-//        final Button buttonSubmit = new Button("Submit");
         panel.add(m_submit);
         panel.add(m_submitWithError);
         

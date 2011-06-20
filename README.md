@@ -15,6 +15,10 @@ The ant command will download the required libraries and build the Hello Spiffy 
 
 To deploy the Hello Spiffy PHP application, copy the contents of the target/www directory from your Hello-Spiffy-PHP working copy of to your web server server.  Run the application by accessing the index.html file. 
 
+Hello Spiffy PHP as a REST application
+--------------------------------------
+In this sample application, the GWT client passes information to the PHP server using URL parameters. This is not a truly REST-compliant way to pass the information. Accessing the PHP file using different URLs for different operations would be more in line with REST philosophy. However, the preferred way to do this in Apache is URL rewriting, which is done in server configuration. See http://httpd.apache.org/docs/2.0/misc/rewriteguide.html for more information on URL rewriting. We feel that this is beyond the scope of this small sample application. 
+
 License
 --------------------------------------
 
