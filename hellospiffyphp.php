@@ -95,7 +95,7 @@ function emit_json_data() {
     ?>
 
     {
-    "user" : <?php emit_user() ?> ,
+    "user" : <?php "HI THERE!!! " . emit_user() ?> ,
     "userAgent" : <?php emit_agent() ?>,
     "serverInfo" : <?php echo(get_server_info()) ?>
 

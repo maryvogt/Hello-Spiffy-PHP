@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase   /target/www
+RewriteRule ^hellospiffyphp/(.*)$ hellospiffyphp.php?name=$1

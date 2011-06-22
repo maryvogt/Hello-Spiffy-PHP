@@ -47,7 +47,6 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
 
     private static Index g_index;
     private TextBox m_text = new TextBox();
-//    private CheckBox m_triggerError = new CheckBox();
     private Button m_submit = new Button("Submit");
     private Button m_submitWithError = new Button("Submit and trigger error");
     private LongMessage m_longMessage = new LongMessage("longMsg");
@@ -123,16 +122,18 @@ public class Index implements EntryPoint, ClickHandler, KeyPressHandler
      */
     private void sendRequest(boolean triggerError)
     {
-        String q = m_text.getValue().trim();
-        if (q.equals("")) {
+        String name = m_text.getValue().trim();
+        if (name.equals("")) {
             MessageUtil.showWarning("Please enter your name in the text field.", false);
             return;
         }
         
-        String restURL = "hellospiffyphp.php";
-        restURL = restURL + "?name=" + q; // we know we have a name because we passed the check above
+        String restURL = "hellospiffyphp";
+        restURL = restURL + "/" + name; // we know we have a name because we passed the check above
+        
         if (triggerError) {
-            restURL = restURL + "&triggererror=TRUE";
+            // this is not a very RESTful way to do this but it's just to show the error handling
+            restURL = restURL + "?triggererror=TRUE";
         }
             
         RESTility.callREST(restURL, new RESTCallback() {
