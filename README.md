@@ -17,7 +17,15 @@ To deploy the Hello Spiffy PHP application, copy the contents of the target/www 
 
 Hello Spiffy PHP as a REST application
 --------------------------------------
-In this sample application, the GWT client passes information to the PHP server using URL parameters. This is not a truly REST-compliant way to pass the information. Accessing the PHP file using different URLs for different operations would be more in line with REST philosophy. However, the preferred way to do this in Apache is URL rewriting, which is done in server configuration. See http://httpd.apache.org/docs/2.0/misc/rewriteguide.html for more information on URL rewriting. We feel that this is beyond the scope of this small sample application. 
+
+PHP files normally serve at a specific URL.  That works well for searching web pages, but not for REST.  
+
+To make our application support the name as part of the URL we're using the <a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">Apache mod_rewrite</a> module.  This requires your Apache server to have mod_rewrite installed and enabled.  If you do then you can just define a rewrite rule in your .htaccess file like this:
+
+       RewriteEngine on
+       RewriteRule ^hellospiffyphp/(.*)$ hellospiffyphp.php?name=$1&%{QUERY_STRING} 
+       
+This rule will take requests to hellospiffyphp/John and send them to hellospiffyphp.php?name=John.  If your server doesn't support mod_rewrite you can just change the client to pass the name as an URL parameter.  
 
 License
 --------------------------------------

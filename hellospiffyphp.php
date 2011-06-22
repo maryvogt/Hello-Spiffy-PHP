@@ -18,6 +18,7 @@
 
 // emit_user_encoded()
 //      outputs the name passed in the URL parameters, encoded for JSON
+//      The name is added as a parameter by our rewrite rules
 function emit_user() {
 
     echo(json_encode(htmlspecialchars($_GET["name"])));
