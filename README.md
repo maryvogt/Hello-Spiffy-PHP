@@ -30,7 +30,7 @@ This rule will take requests to hellospiffyphp/John and send them to hellospiffy
 Debugging through Eclipse
 --------------------------------------
 
-Depending on your web server's configuration, you will probably need to modify your devmode launch configuration file to use the port of your web server.  See [Spiffy UI's GWT Dev Mode page](http://www.spiffyui.org/#!b=hostedMode) for more information.
+Depending on your web server's configuration, you will probably need to modify your devmode launch configuration file to use the port of your web server.  See [Spiffy UI's GWT Dev Mode page](http://www.spiffyui.org/#!hostedMode) for more information.
 
 License
 --------------------------------------
