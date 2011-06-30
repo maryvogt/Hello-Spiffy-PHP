@@ -27,6 +27,11 @@ To make our application support the name as part of the URL we're using the <a h
        
 This rule will take requests to hellospiffyphp/John and send them to hellospiffyphp.php?name=John.  If your server doesn't support mod_rewrite you can just change the client to pass the name as an URL parameter.  
 
+Debugging through Eclipse
+--------------------------------------
+
+Depending on your web server's configuration, you will probably need to modify your devmode launch configuration file to use the port of your web server.  See [Spiffy UI's GWT Dev Mode page](http://www.spiffyui.org/#!hostedMode) for more information.
+
 License
 --------------------------------------
 
